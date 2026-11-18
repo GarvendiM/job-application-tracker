@@ -98,7 +98,7 @@ def delete_company(id):
 # --- JOBS CRUD ---
 @app.route('/jobs')
 def list_jobs():
-   conn = get_db_connection()
+    conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     
     # Fetch all jobs (with company names joined)

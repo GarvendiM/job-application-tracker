@@ -52,7 +52,8 @@ Run the application using
 ```
 python app.py
 ```
-and finally open a new tab on your web browser and input
+and finally press Ctrl + left click in the terminal on 
 ```
 http://127.0.0.1:5000
 ```
+or open a new tab on your web browser and input the link

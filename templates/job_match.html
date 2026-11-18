@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Job Skill Matching</h2>
+<p>Search for job postings that require a specific skill stored in your JSON requirements.</p>
+
+<form action="{{ url_for('job_match') }}" method="GET" style="margin-bottom: 2rem; background: #f8f9fa; padding: 1rem; border-radius: 6px; display: flex; gap: 10px;">
+    <input type="text" name="skill" placeholder="Enter skill (e.g., Python)" value="{{ search_skill }}" required style="flex: 1; padding: 10px; font-size: 1rem;">
+    <button type="submit" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Search Matches</button>
+</form>
+
+{% if search_skill %}
+<h3>Results for "{{ search_skill }}"</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Job Type</th>
+            <th>Requirements</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for job in matched_jobs %}
+        <tr>
+            <td><strong>{{ job.job_title }}</strong></td>
+            <td>{{ job.company_name }}</td>
+            <td>{{ job.job_type }}</td>
+            <td><code>{{ job.requirements }}</code></td>
+            <td><a href="{{ job.job_url }}" target="_blank">View Posting</a></td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" style="text-align: center;">No jobs found requiring "{{ search_skill }}".</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

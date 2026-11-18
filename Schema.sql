@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS job_tracker;
+USE job_tracker;
+
 DROP TABLE IF EXISTS applications, jobs, companies, contacts;
 
 CREATE TABLE companies (
@@ -46,3 +49,24 @@ notes TEXT,
 FOREIGN KEY (company_id) REFERENCES companies(company_id)
 );
 
+ALTER TABLE applications 
+DROP FOREIGN KEY applications_ibfk_1;
+
+ALTER TABLE applications 
+ADD CONSTRAINT applications_ibfk_1 
+FOREIGN KEY (job_id) REFERENCES jobs(job_id) ON DELETE CASCADE;
+
+ALTER TABLE jobs 
+DROP FOREIGN KEY jobs_ibfk_1;
+
+ALTER TABLE jobs 
+ADD CONSTRAINT jobs_ibfk_1 
+FOREIGN KEY (company_id) REFERENCES companies(company_id) ON DELETE CASCADE;
+
+
+ALTER TABLE contacts 
+DROP FOREIGN KEY contacts_ibfk_1;
+
+ALTER TABLE contacts 
+ADD CONSTRAINT contacts_ibfk_1 
+FOREIGN KEY (company_id) REFERENCES companies(company_id) ON DELETE CASCADE;

@@ -31,10 +31,10 @@ Then create the database and import the schema using
   CREATE DATABASE job_tracker;
   USE job_tracker;
 ```
-then copy the code from Schema.sql into the workbench
+Then copy the code from Schema.sql into the workbench
 
 ## Step 3
-Create a virtual Environment and install dependencies
+Return to the terminal and create a virtual Environment and install dependencies
 ```
   python -m venv venv
 

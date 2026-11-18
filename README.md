@@ -19,47 +19,29 @@ Make sure you have the following installed on your system before starting
 - MySQL Server (MySQL Workbench preferrably)
 
 ## Step 1
-Open your terminal and create your project directory
-```
-      mkdir job_tracker
-      cd job_tracker
-```
+Open your File Explorer and create a new folder called job_tracker
+
 ## Step 2
-Login to your MySQL server
-Then create the database and import the schema using 
-```
-  CREATE DATABASE job_tracker;
-  USE job_tracker;
-```
-Then copy the code from Schema.sql into the workbench and execute all code using the lightning bolt
+Go to the file database.py and input your MySQL password in the assigned spot
+Download the Schema.sql, app.py, and database.py and input all 3 files into the folder
 
 ## Step 3
-Return to the terminal and install dependencies using:
+Open your terminal and make your way to the job_tracker folder using:
+```
+cd # copy and paste the path of the folder here
+```
+
+Use the command below to check that the files are there and you are in the folder
+```
+ls
+```
+
+## Step 4
+Now install dependencies using:
 ```
   pip install Flask mysql-connector-python
 ```
-## Step 4
-Create a file named database.py in your root folder
-```
-New-Item -Path "database.py" -ItemType "File"
-```
-Then open the file using notebook
-```
-notepad database.py
-```
-Lastly copy and paste the code below into the notebook and save with Ctrl + S
-(Remember to input your own password)
-```
-import mysql.connector
 
-def get_db_connection():
-    return mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='your_mysql_password',  # Update with your MySQL password
-        database='job_tracker'
-    )
-```
 ## Step 5
 Run the application using
 ```

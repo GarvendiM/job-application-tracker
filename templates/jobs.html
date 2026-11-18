@@ -6,8 +6,10 @@
 <form action="{{ url_for('add_job') }}" method="POST" style="margin-bottom: 2rem; background: #f8f9fa; padding: 1rem; border-radius: 6px;">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
         <select name="company_id" required style="padding: 8px;">
-            <option value="">Select Company *</option>
-            <!-- Note: You can populate this dynamically or type company IDs -->
+    <option value="">Select Company *</option>
+    {% for company in companies %}
+    <option value="{{ company.company_id }}">{{ company.company_name }}</option>
+    {% endfor %}
         </select>
         <input type="text" name="job_title" placeholder="Job Title *" required style="padding: 8px;">
         <input type="number" name="salary_min" placeholder="Min Salary" style="padding: 8px;">

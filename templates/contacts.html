@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Company Contacts</h2>
+
+<h3>Add New Contact</h3>
+<form action="{{ url_for('add_contact') }}" method="POST" style="margin-bottom: 2rem; background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+        <input type="number" name="company_id" placeholder="Company ID *" required style="padding: 8px;">
+        <input type="text" name="contact_name" placeholder="Contact Name *" required style="padding: 8px;">
+        <input type="text" name="title" placeholder="Job Title / Role" style="padding: 8px;">
+        <input type="email" name="email" placeholder="Email" style="padding: 8px;">
+        <input type="text" name="phone" placeholder="Phone" style="padding: 8px;">
+        <input type="text" name="linkedin_url" placeholder="LinkedIn URL" style="padding: 8px;">
+    </div>
+    <textarea name="notes" placeholder="Notes..." style="width: 100%; padding: 8px; margin-bottom: 10px;"></textarea>
+    <button type="submit" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Add Contact</button>
+</form>
+
+<h3>Contact Directory</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+        <tr>
+            <td><strong>{{ contact.contact_name }}</strong></td>
+            <td>{{ contact.company_name }}</td>
+            <td>{{ contact.title or '-' }}</td>
+            <td>{{ contact.email or '-' }}</td>
+            <td>{{ contact.phone or '-' }}</td>
+            <td>
+                <form action="{{ url_for('delete_contact', id=contact.contact_id) }}" method="POST" style="display:inline;">
+                    <button type="submit" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;" onclick="return confirm('Delete this contact?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align: center;">No contacts added yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

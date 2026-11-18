@@ -19,17 +19,26 @@ Make sure you have the following installed on your system before starting
 - MySQL Server (MySQL Workbench preferrably)
 
 ## Step 1
-Open your File Explorer and create a new folder called job_tracker
+Open your terminal and use the command
+```
+mkdir job_tracker
+```
 
 ## Step 2
-Go to the file database.py and input your MySQL password in the assigned spot
-Download the Schema.sql, app.py, and database.py and input all 3 files into the folder
+On your terminal, make your way to the job_tracker folder using:
+```
+cd job_tracker
+```
 
 ## Step 3
-Open your terminal and make your way to the job_tracker folder using:
+Go to the file database.py and input your MySQL password in the assigned spot
+Download the Schema.sql, app.py, and database.py and input all 3 files into the folder using either the commands
 ```
-cd # copy and paste the path of the folder here
+Copy-Item "C:\Users\YourUsername\Desktop\app.py" .
+Copy-Item "C:\Users\YourUsername\Desktop\Schema.sql" .
+Copy-Item "C:\Users\YourUsername\Desktop\database.py" .
 ```
+Or manually drag the files into the folder
 
 Use the command below to check that the files are there and you are in the folder
 ```

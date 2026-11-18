@@ -32,11 +32,9 @@ cd job_tracker
 
 ## Step 3
 Go to the file database.py and input your MySQL password in the assigned spot  
-Download the Schema.sql, app.py, and database.py and input all 3 files into the folder using either the commands
+Download the Schema.sql, app.py, and database.py and input all 3 files into the folder using either the command
 ```
-Copy-Item "C:\Users\YourUsername\Desktop\app.py" .
-Copy-Item "C:\Users\YourUsername\Desktop\Schema.sql" .
-Copy-Item "C:\Users\YourUsername\Desktop\database.py" .
+Copy-Item "copy/paste the path here" . (add a period to copy it into the folder)
 ```
 Or manually drag the files into the folder
 

@@ -46,7 +46,7 @@ ls
 ## Step 4
 Now install dependencies using:
 ```
-  pip install Flask mysql-connector-python
+  python -m pip install Flask mysql-connector-python
 ```
 
 ## Step 5

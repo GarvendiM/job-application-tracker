@@ -191,36 +191,52 @@ def delete_job(id):
 def list_applications():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
+    
+    # Fetch all applications joined with jobs and companies
     cursor.execute("""
-        SELECT a.*, j.job_title, c.company_name
+        SELECT a.*, j.job_title, c.company_name 
         FROM applications a
         JOIN jobs j ON a.job_id = j.job_id
         JOIN companies c ON j.company_id = c.company_id
         ORDER BY a.application_date DESC
     """)
     applications = cursor.fetchall()
+    
+    # Fetch jobs so the dropdown can populate in the form
+    cursor.execute("""
+        SELECT j.job_id, j.job_title, c.company_name 
+        FROM jobs j
+        JOIN companies c ON j.company_id = c.company_id
+    """)
+    jobs = cursor.fetchall()
+    
     cursor.close()
     conn.close()
-    return render_template('applications.html', applications=applications)
+    
+    return render_template('applications.html', applications=applications, jobs=jobs)
 
 @app.route('/applications/add', methods=['POST'])
 def add_application():
-    cover_letter = 1 if 'cover_letter_sent' in request.form else 0
+    job_id = request.form.get('job_id')
+    application_date = request.form.get('application_date')
+    status = request.form.get('status')
+    resume_version = request.form.get('resume_version')
+    
+    # Checkboxes only send a value if checked; otherwise, they are omitted
+    cover_letter_sent = 1 if request.form.get('cover_letter_sent') == '1' else 0
+    
     conn = get_db_connection()
     cursor = conn.cursor()
+    
     cursor.execute("""
         INSERT INTO applications (job_id, application_date, status, resume_version, cover_letter_sent)
         VALUES (%s, %s, %s, %s, %s)
-    """, (
-        request.form['job_id'],
-        request.form['application_date'],
-        request.form['status'],
-        request.form.get('resume_version'),
-        cover_letter
-    ))
+    """, (job_id, application_date, status, resume_version, cover_letter_sent))
+    
     conn.commit()
     cursor.close()
     conn.close()
+    
     return redirect(url_for('list_applications'))
 
 @app.route('/applications/edit/<int:id>', methods=['POST'])

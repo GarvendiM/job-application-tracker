@@ -5,7 +5,12 @@
 <h3>Add New Contact</h3>
 <form action="{{ url_for('add_contact') }}" method="POST" style="margin-bottom: 2rem; background: #f8f9fa; padding: 1rem; border-radius: 6px;">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
-        <input type="number" name="company_id" placeholder="Company ID *" required style="padding: 8px;">
+        <select name="company_id" required style="padding: 8px;">
+            <option value="">Select Company *</option>
+            {% for company in companies %}
+            <option value="{{ company.company_id }}">{{ company.company_name }}</option>
+            {% endfor %}
+        </select>
         <input type="text" name="contact_name" placeholder="Contact Name *" required style="padding: 8px;">
         <input type="text" name="title" placeholder="Job Title / Role" style="padding: 8px;">
         <input type="email" name="email" placeholder="Email" style="padding: 8px;">

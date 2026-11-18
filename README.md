@@ -28,10 +28,13 @@ Open it using notebook.
 From there input your own MySQL root password and save it (Ctrl + S).
 
 ## Step 3 
-Open your MySQL Workbench and type into the Query
+Open your MySQL Workbench and type into the Query connected to your server
 ```
+CREATE DATABASE IF NOT EXISTS job_tracker;
 USE job_tracker;
 ```
+Then open the Schema.sql and copy/paste it into the Query and run it.
+
 ## Step 4
 Open your terminal and navigate to the extracted zip folder using: 
 ```

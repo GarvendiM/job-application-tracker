@@ -23,8 +23,9 @@ Make sure you have the following installed on your system before starting
 Download the files as a ZIP folder and extract all
 
 ## Step 2
-Right click on database.py and open it using notebook.   
-From there input your MySQL root password and save it (Ctrl + S).
+Open the folder and right click on database.py.  
+Open it using notebook.   
+From there input your own MySQL root password and save it (Ctrl + S).
 
 ## Step 3 
 Open your MySQL Workbench and type into the Query

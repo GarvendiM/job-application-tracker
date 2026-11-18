@@ -39,7 +39,8 @@ Return to the terminal and install dependencies using:
   pip install Flask mysql-connector-python
 ```
 ## Step 4 
-Create a file in your root folder using the code below:
+Create a file named database.py in your root folder and configure your local MySQL credentials:
+(the same code can be found in database.py)
 ```
 import mysql.connector
 

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dashboard Overview</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Total Companies</h3>
+        <p>{{ stats.total_companies }}</p>
+    </div>
+    <div class="stat-card">
+        <h3>Total Jobs</h3>
+        <p>{{ stats.total_jobs }}</p>
+    </div>
+    <div class="stat-card">
+        <h3>Total Applications</h3>
+        <p>{{ stats.total_applications }}</p>
+    </div>
+    <div class="stat-card" style="background: #28a745;">
+        <h3>Active Interviews</h3>
+        <p>{{ stats.active_interviews }}</p>
+    </div>
+</div>
+
+<h2>Recent Applications</h2>
+{% if recent_apps %}
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in recent_apps %}
+        <tr>
+            <td>{{ app.application_date }}</td>
+            <td><strong>{{ app.job_title }}</strong></td>
+            <td>{{ app.company_name }}</td>
+            <td><span style="padding: 4px 8px; background: #e2e3e5; border-radius: 4px;">{{ app.status }}</span></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No applications logged yet. Head over to the Companies and Jobs sections to start tracking your search!</p>
+{% endif %}
+{% endblock %}

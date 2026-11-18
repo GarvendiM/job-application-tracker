@@ -16,7 +16,7 @@ search process.
 ## Prerequisites
 Make sure you have the following installed on your system before starting
 - Python (v3.15 or compatible modern release)
-- MySQL Server
+- MySQL Server (MySQL Workbench preferrably)
 
 ## Step 1
 Open your terminal and create your project directory
@@ -26,9 +26,6 @@ Open your terminal and create your project directory
 ```
 ## Step 2
 Login to your MySQL server
-```
- mysql -u root -p
-```
 Then create the database and import the schema using 
 ```
   CREATE DATABASE job_tracker;

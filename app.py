@@ -276,16 +276,22 @@ def delete_application(id):
 def list_contacts():
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
+
     cursor.execute("""
-        SELECT co.*, c.company_name 
-        FROM contacts co
-        JOIN companies c ON co.company_id = c.company_id
-        ORDER BY co.contact_name ASC
+        SELECT ct.*, c.company_name
+        FROM contacts ct
+        JOIN companies c ON ct.company_id = c.company_id
+        ORDER BY c.company_name, ct.contact_name
     """)
     contacts = cursor.fetchall()
+
+    cursor.execute("SELECT company_id, company_name FROM companies ORDER BY company_name")
+    companies = cursor.fetchall()
+
     cursor.close()
     conn.close()
-    return render_template('contacts.html', contacts=contacts)
+
+    return render_template('contacts.html', contacts=contacts, companies=companies)
 
 @app.route('/contacts/add', methods=['POST'])
 def add_contact():

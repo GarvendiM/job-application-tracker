@@ -26,18 +26,28 @@ Download the files as a ZIP folder and extract all
 Right click on database.py and open it using notebook.   
 From there input your MySQL root password and save it (Ctrl + S).
 
-## Step 2 
+## Step 3 
 Open your MySQL Workbench and type into the Query
 ```
 USE job_tracker;
 ```
-## Step 3
-Open your terminal (Windows Powershell preferred) and install dependencies using:  
+## Step 4
+Open your terminal and navigate to the extracted zip folder using: 
+```
+cd "find the folder and copy the path to here"
+```
+You should see all files within the folder (Schema.sql, app.py, etc.) when using
+```
+ls
+```
+
+## Step 5
+While in this folder through the terminal, install dependencies using:  
 ```
 python -m pip install Flask mysql-connector-python
 ``` 
 
-## Step 4
+## Step 6
 Run the application using
 ```
 python app.py

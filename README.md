@@ -16,8 +16,8 @@ search process.
 ## Prerequisites
 Make sure you have the following installed on your system before starting
 - Python (v3.15 or compatible modern release)
-- MySQL Server (MySQL Workbench preferrably)
-- Windows Powershell (optional)
+- MySQL Server (MySQL Workbench)
+- Windows Powershell
 
 ## Step 1
 Download the files as a ZIP folder and extract all

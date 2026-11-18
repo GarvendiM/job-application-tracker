@@ -20,25 +20,32 @@ Make sure you have the following installed on your system before starting
 
 ## Step 1
 Open your terminal and create your project directory
-  mkdir job_tracker
-  cd job_tracker
-
+```
+      mkdir job_tracker
+      cd job_tracker
+```
 ## Step 2
 Login to your MySQL server
-  mysql -u root -p
+```
+ mysql -u root -p
+```
 Then create the database and import the schema using 
+```
   CREATE DATABASE job_tracker;
   USE job_tracker;
-
+```
 ## Step 3
 Create a virtual Environment and install dependencies
+```
   python -m venv venv
-  .\venv\Scripts\Activate
-  pip install Flask mysql-connector-python
 
+  .\venv\Scripts\Activate
+
+  pip install Flask mysql-connector-python
+```
 ## Step 4 
 Create a file in your root folder using the code below:
-
+```
 import mysql.connector
 
 def get_db_connection():
@@ -48,12 +55,13 @@ def get_db_connection():
         password='your_mysql_password',  # Update with your MySQL password
         database='job_tracker'
     )
-
+```
 ## Step 5
 Run the application using
-
+```
 python app.py
-
+```
 and finally open your web browser and input
-
+```
 http://127.0.0.1:5000
+```

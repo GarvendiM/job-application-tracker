@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Job Applications</h2>
+
+<h3>Log New Application</h3>
+<form action="{{ url_for('add_application') }}" method="POST" style="margin-bottom: 2rem; background: #f8f9fa; padding: 1rem; border-radius: 6px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+        <input type="number" name="job_id" placeholder="Job ID *" required style="padding: 8px;">
+        <input type="date" name="application_date" required style="padding: 8px;">
+        <select name="status" required style="padding: 8px;">
+            <option value="Applied">Applied</option>
+            <option value="Screening">Screening</option>
+            <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Withdrawn">Withdrawn</option>
+        </select>
+        <input type="text" name="resume_version" placeholder="Resume Version (e.g., v2)" style="padding: 8px;">
+    </div>
+    <label style="display: block; margin-bottom: 10px;">
+        <input type="checkbox" name="cover_letter_sent" value="1"> Cover Letter Sent
+    </label>
+    <button type="submit" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Add Application</button>
+</form>
+
+<h3>Application Tracker</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Status</th>
+            <th>Resume</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.application_date }}</td>
+            <td><strong>{{ app.job_title }}</strong></td>
+            <td>{{ app.company_name }}</td>
+            <td><span style="padding: 4px 8px; background: #e2e3e5; border-radius: 4px;">{{ app.status }}</span></td>
+            <td>{{ app.resume_version or '-' }}</td>
+            <td>
+                <form action="{{ url_for('delete_application', id=app.application_id) }}" method="POST" style="display:inline;">
+                    <button type="submit" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;" onclick="return confirm('Delete this application?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" style="text-align: center;">No applications tracked yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -109,7 +109,7 @@ def list_jobs():
     jobs = cursor.fetchall()
     cursor.close()
     conn.close()
-    return render_template('jobs.html', jobs=jobs)
+    return render_template('jobs.html', jobs=jobs, companies=companies)
 
 @app.route('/jobs/add', methods=['POST'])
 def add_job():

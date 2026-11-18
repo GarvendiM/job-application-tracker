@@ -24,7 +24,7 @@ Download the files as a ZIP folder and extract all
 
 ## Step 2
 Open the folder and right click on database.py.  
-Open it using notebook.   
+Press edit by notepad.   
 From there input your own MySQL root password and save it (Ctrl + S).
 
 ## Step 3 

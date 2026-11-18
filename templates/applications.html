@@ -5,7 +5,12 @@
 <h3>Log New Application</h3>
 <form action="{{ url_for('add_application') }}" method="POST" style="margin-bottom: 2rem; background: #f8f9fa; padding: 1rem; border-radius: 6px;">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
-        <input type="number" name="job_id" placeholder="Job ID *" required style="padding: 8px;">
+        <select name="job_id" required style="padding: 8px;">
+            <option value="">Select Job Position *</option>
+            {% for job in jobs %}
+            <option value="{{ job.job_id }}">{{ job.job_title }} ({{ job.company_name }})</option>
+            {% endfor %}
+        </select>
         <input type="date" name="application_date" required style="padding: 8px;">
         <select name="status" required style="padding: 8px;">
             <option value="Applied">Applied</option>

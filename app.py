@@ -98,15 +98,21 @@ def delete_company(id):
 # --- JOBS CRUD ---
 @app.route('/jobs')
 def list_jobs():
-    conn = get_db_connection()
+   conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
+    
+    # Fetch all jobs (with company names joined)
     cursor.execute("""
         SELECT j.*, c.company_name 
-        FROM jobs j
+        FROM jobs j 
         JOIN companies c ON j.company_id = c.company_id
-        ORDER BY j.date_posted DESC
     """)
     jobs = cursor.fetchall()
+    
+    # Fetch all companies to populate the dropdown
+    cursor.execute("SELECT company_id, company_name FROM companies")
+    companies = cursor.fetchall()
+    
     cursor.close()
     conn.close()
     return render_template('jobs.html', jobs=jobs, companies=companies)

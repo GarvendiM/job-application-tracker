@@ -61,3 +61,7 @@ and finally press Ctrl + left click in the terminal on
 http://127.0.0.1:5000
 ```
 or open a new tab on your web browser and input the link
+
+## Video of app
+https://github.com/user-attachments/assets/1f7d961d-1322-4723-8152-4908d636fc47
+
